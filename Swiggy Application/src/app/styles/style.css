@@ -1,0 +1,240 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+
+/* create global variable with :root selector */
+:root {
+  --header-bg-color: rgb(1, 163, 144);
+  --footer-bg-color: rgb(1, 163, 144);
+  --text-color: #000;
+  --light-green: #00ad1d;
+  --dark-green: #016034;
+  --orange: #d97919;
+  --light-red: rgb(236, 56, 56);
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+
+body {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #474747;
+}
+
+.footer{
+  background: #02060c;
+    color: #fff;
+    padding: 1rem;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .logo {
+  padding: 10px 0 10px 15px;
+  width: 100px;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+
+  /* width: 100vw; */
+  /* height: 80px; */
+  background-color: var(--header-bg-color);
+  border-radius: 5px;
+  box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+  font-weight: bold;
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  overflow-y: hidden; */
+}
+
+.nav-items > ul{
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+  font-size: large;
+  cursor: pointer;
+}
+
+.nav-items > ul > li .logout-btn,
+.nav-items > ul > li .login-btn {
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  margin-right: 15px;
+}
+
+.nav-items > ul > li .logout-btn {
+  background-color: var(--orange);
+}
+
+.nav-items > ul > li .login-btn {
+  background-color: var(--light-red);
+}
+
+.nav-items > ul > li .logout-btn:hover,
+.nav-items > ul > li .login-btn:hover {
+  background-color: var(--dark-green);
+}
+
+
+
+
+.card-container {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 240px;
+  border-radius: 5px;
+  box-shadow: -1px 5px 10px 5px rgba(42, 42, 42, 0.2);
+  padding: 10px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.card-image {
+  width: 100%; /* Ensure image fills the card */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.card > h5 {
+  font-weight: lighter;
+}
+
+.card > span {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.card > span > h4 {
+  font-weight: bolder;
+  font-size: 12px;
+  padding: 0 2px 0;
+  margin-top: 10px;
+}
+
+.card > span > h4:first-child {
+  display: flex;
+  align-items: center;
+  background-color: var(--light-green);
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.card > span > h4:first-child .fa-star {
+  font-size: 10px;
+  padding: 0 5px 3px 0;
+}
+
+
+/*Shimmer CSS */
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+.shimmer-card {
+  flex-basis: 250px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-color: #d3d5df;
+  box-shadow: 0 4px 7px 0 rgb(218 220 230 / 60%);
+}
+.shimmer-title {
+  width: 60%;
+  margin-top: 10px;
+}
+.shimmer-tags {
+  width: 80%;
+  margin-top: 4px;
+}
+.shimmer-details {
+  width: 100%;
+  margin-top: 18px;
+}
+.shimmer-container .shimmer-img {
+  height: 144px;
+  width: 230px;
+}
+
+/*Animation to Shimmer Component Cards */
+.stroke {
+  height: 15px;
+  background: #777;
+}
+.animate {
+  animation: shimmer 3s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+  background-size: 1000px 100%;
+}
+@keyframes shimmer {
+  from {
+    background-position: -1000px 0;
+  }
+  to {
+    background-position: 1000px 0;
+  }
+}
