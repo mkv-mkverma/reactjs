@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {FOODFIRE_API_URL} from "../public/common/constant";
 import ResturantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
+import {Link} from "react-router-dom";
 
 function filterResturant(serchText, allRestaurants) {
   return allRestaurants.filter((restaurant) =>
@@ -87,7 +88,15 @@ const Body = () => {
         <div className="card-container">
           {filteredRestaurants.map((restaurant) => {
             return (
-              <ResturantCard {...restaurant?.info} key={restaurant?.info?.id} />
+              <Link
+                to={"/resturant/" + restaurant?.info?.id}
+                key={restaurant?.info?.id}
+              >
+                <ResturantCard
+                  {...restaurant?.info}
+                  key={restaurant?.info?.id}
+                />
+              </Link>
             );
           })}
         </div>

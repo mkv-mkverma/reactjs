@@ -3,24 +3,45 @@ import ReactDOM from "react-dom/client";
 import Footer from "./src/app/components/footer";
 import Header from "./src/app/components/header";
 import Body from "./src/app/components/body";
-// Header
-// Footer
-// Body
-// About
-// Error
-// Contact
+import About from "./src/app/components/About";
+import ResturantMenu from "./src/app/components/ResturantMenu";
+import Error from "./src/app/components/Error";
+// for routing our page import createBrowserRouter and RouterProvider for providing router &
+// Outlet for children component for nested routing
+import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 // login
-// ResturantMenu
 
 const AppLayout = () => {
   return (
     <>
       <Header />
-      <Body />
+      <Outlet />
       <Footer />
     </>
   );
 };
 
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/resturant/:resId",
+        element: <ResturantMenu />,
+      },
+    ],
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);
