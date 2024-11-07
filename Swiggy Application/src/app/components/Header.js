@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import foodFireLogo from "../public/assets/images/foodFireLogo.png";
+import useOnlineStatus from "../hooks/useOnlineStatus";
 
 const Title = () => {
   return (
@@ -11,12 +12,17 @@ const Title = () => {
   );
 };
 const Header = () => {
+  const isOnline = useOnlineStatus();
+
   return (
     <>
       <div className="header">
         <Title />
         <div className="nav-items">
           <ul>
+            <li>
+              <h2>{!isOnline ? "🔴" : "🟢 "} </h2>
+            </li>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -25,6 +31,9 @@ const Header = () => {
             </li>
             <li>
               <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link to="/grocery">Grocery</Link>
             </li>
           </ul>
         </div>

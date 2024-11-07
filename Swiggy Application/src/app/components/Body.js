@@ -3,6 +3,8 @@ import {FOODFIRE_API_URL} from "../public/common/constant";
 import ResturantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
+import useOnlineStatus from "../hooks/useOnlineStatus";
+import UserOffline from "./UserOffline";
 
 function filterResturant(serchText, allRestaurants) {
   return allRestaurants.filter((restaurant) =>
@@ -15,7 +17,7 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [searchText, setSearchText] = useState("");
-
+  const isOnline = useOnlineStatus();
   // use useEffect for one time call getRestaurants using empty dependency array
   useEffect(() => {
     getResturants();
@@ -57,6 +59,14 @@ const Body = () => {
       setErrorMessage("");
       setFilteredRestaurants(allRestaurants);
     }
+  }
+
+  if (!isOnline) {
+    return (
+      <>
+        <UserOffline />
+      </>
+    );
   }
 
   // if allRestaurants is empty don't render restaurants cards
