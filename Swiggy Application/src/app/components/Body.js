@@ -1,11 +1,11 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {FOODFIRE_API_URL} from "../public/common/constant";
-import ResturantCard from "./ResturantCard";
+import ResturantCard, {withPromtedLabel} from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../hooks/useOnlineStatus";
 import UserOffline from "./UserOffline";
-
+import UserContext from "../utils/userContext";
 function filterResturant(serchText, allRestaurants) {
   return allRestaurants.filter((restaurant) =>
     restaurant?.info?.name.toLowerCase().includes(serchText.toLowerCase())
@@ -18,6 +18,8 @@ const Body = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [searchText, setSearchText] = useState("");
   const isOnline = useOnlineStatus();
+  const {loggedInUser, setUserInfo} = useContext(UserContext);
+  const ResturantCardPromoted = withPromtedLabel(ResturantCard);
   // use useEffect for one time call getRestaurants using empty dependency array
   useEffect(() => {
     getResturants();
@@ -74,22 +76,38 @@ const Body = () => {
 
   return (
     <>
-      <div>
-        <input
-          type="text"
-          value={searchText}
-          className="auto-complete"
-          placeholder="Search a restaurant you want..."
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-        <button
-          type="button"
-          onClick={() => {
-            searchResturant(searchText, allRestaurants);
-          }}
-        >
-          Search
-        </button>
+      <div className="filter-container">
+        <span>
+          <input
+            type="text"
+            value={searchText}
+            className="auto-complete"
+            placeholder="Search a restaurant you want..."
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          <button
+            type="button"
+            onClick={() => {
+              searchResturant(searchText, allRestaurants);
+            }}
+          >
+            Search
+          </button>
+        </span>
+
+        <span>
+          <button type="button"> Filter by Rating</button>
+        </span>
+        <span>
+          <input
+            type="text"
+            placeholder="Loggin User"
+            value={loggedInUser}
+            onChange={(e) => {
+              setUserInfo(e.target.value);
+            }}
+          />
+        </span>
       </div>
       {errorMessage && <div className="error-container">{errorMessage}</div>}
       {allRestaurants?.length === 0 ? (
@@ -102,10 +120,18 @@ const Body = () => {
                 to={"/resturant/" + restaurant?.info?.id}
                 key={restaurant?.info?.id}
               >
-                <ResturantCard
-                  {...restaurant?.info}
-                  key={restaurant?.info?.id}
-                />
+                {console.log(restaurant)}
+                {restaurant?.info?.isOpen ? (
+                  <ResturantCardPromoted
+                    {...restaurant?.info}
+                    key={restaurant?.info?.id}
+                  />
+                ) : (
+                  <ResturantCard
+                    {...restaurant?.info}
+                    key={restaurant?.info?.id}
+                  />
+                )}
               </Link>
             );
           })}

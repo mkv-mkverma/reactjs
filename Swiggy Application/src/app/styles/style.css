@@ -94,6 +94,7 @@ body {
   justify-content: space-between;
   align-items: flex-end;
   gap: 2rem;
+  list-style-type: none;
 }
 
 .nav-items > ul > li {
@@ -658,3 +659,14 @@ body {
   background-color: #ea4335;
 }
 /* Social Profile Class page CSS End */
+
+.filter-container{
+  display: flex;
+  flex-direction: row;
+  /* align-content: center; */
+  justify-content: center;
+  align-items: center;
+  margin: 35px;
+  gap: 20px;
+}
+

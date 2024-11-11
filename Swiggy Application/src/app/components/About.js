@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Link, Outlet} from "react-router-dom";
 import burgerImage from "../public/assets/images/burgerImage.png";
+import UserContext from "../utils/userContext";
 const About = () => {
   const [show, setShow] = useState(false);
   return (
@@ -32,6 +33,14 @@ const About = () => {
       </div>
       <div className="about-container">
         <div className="about-left">
+          <div>
+            LoggedIn User:
+            <UserContext.Consumer>
+              {({loggedInUser}) => {
+                return <h4>{loggedInUser}</h4>;
+              }}
+            </UserContext.Consumer>
+          </div>
           <h1>
             Welcome to <br /> The world of <br />{" "}
             <span>Tasty & Fresh Food</span>

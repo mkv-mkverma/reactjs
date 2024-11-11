@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom";
 import foodFireLogo from "../public/assets/images/foodFireLogo.png";
 import useOnlineStatus from "../hooks/useOnlineStatus";
+import {useContext} from "react";
+import UserContext from "../utils/userContext";
 
 const Title = () => {
   return (
@@ -13,6 +15,7 @@ const Title = () => {
 };
 const Header = () => {
   const isOnline = useOnlineStatus();
+  const {loggedInUser} = useContext(UserContext);
 
   return (
     <>
@@ -21,7 +24,7 @@ const Header = () => {
         <div className="nav-items">
           <ul>
             <li>
-              <h2>{!isOnline ? "🔴" : "🟢 "} </h2>
+              <h2> {!isOnline ? "🔴" : "🟢 "} </h2>
             </li>
             <li>
               <Link to="/">Home</Link>
@@ -34,6 +37,11 @@ const Header = () => {
             </li>
             <li>
               <Link to="/grocery">Grocery</Link>
+            </li>
+            <li>
+              <Link to="/login">
+                <strong>{loggedInUser}</strong>
+              </Link>
             </li>
           </ul>
         </div>

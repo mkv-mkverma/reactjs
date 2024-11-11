@@ -1,4 +1,6 @@
+import {useContext} from "react";
 import {IMG_CDN_URL} from "../public/common/constant";
+import UserContext from "../utils/userContext";
 
 const ResturantCard = ({
   cloudinaryImageId,
@@ -9,6 +11,8 @@ const ResturantCard = ({
   costForTwo,
   avgRatingString,
 }) => {
+  const {loggedInUser} = useContext(UserContext);
+
   return (
     <div className="card">
       <img
@@ -37,8 +41,27 @@ const ResturantCard = ({
         <h4>•</h4>
         <h4>{costForTwo ?? "₹200 for two"}</h4>
       </span>
+      <h4>User: {loggedInUser}</h4>
     </div>
   );
+};
+
+export const withPromtedLabel = (ResturantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <lable>Promoted</lable>
+        <ResturantCard {...props} />
+      </div>
+    );
+  };
+};
+
+export const withLogging = (WrappedComponent) => {
+  return (props, ref) => {
+    console.log("Component is rendered");
+    return <WrappedComponent {...props} ref={ref} />;
+  };
 };
 
 export default ResturantCard;

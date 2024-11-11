@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, {lazy, Suspense, useContext, useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 import Footer from "./src/app/components/footer";
 import Body from "./src/app/components/body";
@@ -10,6 +10,7 @@ import Error from "./src/app/components/Error";
 // for routing our page import createBrowserRouter and RouterProvider for providing router &
 // Outlet for children component for nested routing
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
+import UserContext from "./src/app/utils/userContext";
 
 // login
 
@@ -17,12 +18,31 @@ import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 const Grocery = lazy(() => import("./src/app/components/Grocery"));
 
 const AppLayout = () => {
+  // authentication
+
+  const {loggedInUser} = useContext(UserContext);
+  const [userName, setUserInfo] = useState(loggedInUser);
+
+  useEffect(() => {
+    // Make an API call to get user data
+    setTimeout(() => {
+      const data = {
+        name: "Manish Verma",
+      };
+      setUserInfo(data.name);
+    }, 5000);
+  }, []);
+
   return (
-    <>
-      <Header />
-      <Outlet />
-      <Footer />
-    </>
+    <UserContext.Provider value={{loggedInUser: userName, setUserInfo}}>
+      <>
+        {/* <UserContext.Provider value={{loggedInUser: "Elon Musk"}}> */}
+        <Header />
+        {/* </UserContext.Provider> */}
+        <Outlet />
+        <Footer />
+      </>
+    </UserContext.Provider>
   );
 };
 
