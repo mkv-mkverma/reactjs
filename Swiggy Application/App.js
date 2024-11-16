@@ -11,6 +11,9 @@ import Error from "./src/app/components/Error";
 // Outlet for children component for nested routing
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 import UserContext from "./src/app/utils/userContext";
+import {Provider} from "react-redux";
+import appStore from "./src/app/utils/appStore";
+import Cart from "./src/app/components/cart";
 
 // login
 
@@ -34,15 +37,17 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{loggedInUser: userName, setUserInfo}}>
-      <>
-        {/* <UserContext.Provider value={{loggedInUser: "Elon Musk"}}> */}
-        <Header />
-        {/* </UserContext.Provider> */}
-        <Outlet />
-        <Footer />
-      </>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{loggedInUser: userName, setUserInfo}}>
+        <>
+          {/* <UserContext.Provider value={{loggedInUser: "Elon Musk"}}> */}
+          <Header />
+          {/* </UserContext.Provider> */}
+          <Outlet />
+          <Footer />
+        </>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -65,6 +70,10 @@ const appRouter = createBrowserRouter([
             element: <Profile />,
           },
         ],
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/grocery",

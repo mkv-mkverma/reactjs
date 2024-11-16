@@ -18,7 +18,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 /* create global variable with :root selector */
 :root {
-  --header-bg-color: rgb(1, 163, 144);
+  --header-bg-color: #ffffff;
   --footer-bg-color: rgb(1, 163, 144);
   --text-color: #000;
   --light-green: #00ad1d;
@@ -60,8 +60,9 @@ body {
 }
 
 .header .logo {
-  padding: 10px 0 10px 15px;
-  width: 100px;
+  width: 80px;
+  padding: 10px 10px 10px 10px;
+  border-radius: 30px;
 }
 
 .header{
@@ -92,9 +93,9 @@ body {
   flex-direction: row;
   align-content: space-between;
   justify-content: space-between;
-  align-items: flex-end;
   gap: 2rem;
   list-style-type: none;
+  align-items: center;
 }
 
 .nav-items > ul > li {
@@ -125,6 +126,13 @@ body {
 .nav-items > ul > li .logout-btn:hover,
 .nav-items > ul > li .login-btn:hover {
   background-color: var(--dark-green);
+}
+.nav-items > ul > li a {
+  color: #7a7a7a;
+    text-decoration: none;
+}
+.nav-items > ul > li a:hover {
+  color: #fe5200
 }
 
 

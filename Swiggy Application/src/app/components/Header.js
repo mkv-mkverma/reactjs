@@ -3,6 +3,7 @@ import foodFireLogo from "../public/assets/images/foodFireLogo.png";
 import useOnlineStatus from "../hooks/useOnlineStatus";
 import {useContext} from "react";
 import UserContext from "../utils/userContext";
+import {useSelector} from "react-redux";
 
 const Title = () => {
   return (
@@ -17,6 +18,11 @@ const Header = () => {
   const isOnline = useOnlineStatus();
   const {loggedInUser} = useContext(UserContext);
 
+  const cartItems = useSelector((store) => {
+    return store.cart.items;
+  });
+
+  console.log(cartItems);
   return (
     <>
       <div className="header">
@@ -24,7 +30,7 @@ const Header = () => {
         <div className="nav-items">
           <ul>
             <li>
-              <h2> {!isOnline ? "🔴" : "🟢 "} </h2>
+              <h4> {!isOnline ? "🔴" : "🟢 "} </h4>
             </li>
             <li>
               <Link to="/">Home</Link>
@@ -34,6 +40,11 @@ const Header = () => {
             </li>
             <li>
               <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <strong>
+                <Link to="/cart">Cart ({cartItems.length} items)</Link>
+              </strong>
             </li>
             <li>
               <Link to="/grocery">Grocery</Link>
