@@ -67,3 +67,24 @@ index.css
 @tailwind utilities;
 
 npm run start
+
+# Netflix GPT
+
+    - Create Reach App
+    - Configured TailwindCss
+
+# Feature
+
+    - Login / Signup
+        - Sign In / Sign up Form
+        - redirect to Browse page
+    - Browse (comes after authentication)
+        - Header
+        - Main Movie
+            - Tailer in BackGround
+            - Title & Description
+            - MovieSuggestions
+                - MovieLists * N
+    - NetflixGPT
+        - Search Bar
+        - Movie Suggestions
