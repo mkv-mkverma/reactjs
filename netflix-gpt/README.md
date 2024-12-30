@@ -84,8 +84,16 @@ npm run start
         - Main Movie
             - Tailer in BackGround
             - Title & Description
-            - MovieSuggestions
+            - Movie Suggestions
                 - MovieLists * N
     - NetflixGPT
         - Search Bar
         - Movie Suggestions
+
+# create functional component
+
+rafce then tab
+
+# install routing
+
+npm i react-router-dom
