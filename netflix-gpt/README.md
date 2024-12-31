@@ -91,8 +91,18 @@ npm run start
     - firebase init
     - npm run build
     - firebase deploy
-    - firebase signIn and signUp
+    - firebase signIn and signUp API
     - Install redux
+    - Utils
+        appStore.js
+        Create slice (ex: useSlice/cardSlice)
+        Import slice in appStore reducer
+        Provide store to body or App.js
+    - fiebase on auth state change API
+
+    - Bowser and Header Component
+    - Signout
+    - Update displayName when Signup
     -
 
 # Feature
@@ -118,8 +128,8 @@ rafce then tab
 
 # install routing
 
-npm i react-router-dom
-npm i firebase
-npm i -g firebase-tools
-npm i -D @reduxjs/toolkit
-npm i -D react-redux
+- npm i react-router-dom
+- npm i firebase
+- npm i -g firebase-tools
+- npm i -D @reduxjs/toolkit
+- npm i -D react-redux

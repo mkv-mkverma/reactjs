@@ -1,21 +1,27 @@
 // create .js file then type rafce and tab
 import React, {useRef, useState} from "react";
 import Header from "./Header";
-import {BACKGROUND_URL} from "../public/common/constant";
-import {Link} from "react-router-dom";
+import {BACKGROUND_URL, USER_DEFAULT_ICON} from "../public/common/constant";
+import {Link, useNavigate} from "react-router-dom";
 import Footer from "./Footer";
 import {checkValidData} from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import {auth} from "../utils/firebase";
+import {useDispatch} from "react-redux";
+import {addUser} from "../utils/userSlice";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
   const email = useRef(null);
   const password = useRef(null);
+  const displayName = useRef(null);
+  const dispatch = useDispatch();
 
   const handleSubmitForm = () => {
     const message = checkValidData(email.current.value, password.current.value);
@@ -34,6 +40,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log("User signed in:", user);
+          navigate("/browse");
         })
         .catch((error) => {
           console.error("Error code:", error.code);
@@ -51,6 +58,23 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log("User signed in:", user);
+
+          // update user Profile
+          updateProfile(user, {
+            displayName: displayName.current.value,
+            photoURL: USER_DEFAULT_ICON,
+          })
+            .then(() => {
+              // Update successful
+              const user = auth.currentUser;
+              const {uid, email, displayName} = user;
+              dispatch(addUser({uid, email, displayName}));
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrorMessage(error.message);
+            });
         })
         .catch((error) => {
           console.error("Error code:", error.code);
@@ -75,6 +99,7 @@ const Login = () => {
         </h1>
         {!isSignIn && (
           <input
+            ref={displayName}
             type="text"
             placeholder="Full name"
             className="w-full p-4 my-2 bg-black text-white border border-gray-800 focus:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
