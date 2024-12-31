@@ -1,12 +1,64 @@
 // create .js file then type rafce and tab
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import Header from "./Header";
 import {BACKGROUND_URL} from "../public/common/constant";
 import {Link} from "react-router-dom";
 import Footer from "./Footer";
+import {checkValidData} from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import {auth} from "../utils/firebase";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const email = useRef(null);
+  const password = useRef(null);
+
+  const handleSubmitForm = () => {
+    const message = checkValidData(email.current.value, password.current.value);
+    setErrorMessage(message);
+
+    if (message) return;
+
+    if (isSignIn) {
+      // Sign-In Code
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log("User signed in:", user);
+        })
+        .catch((error) => {
+          console.error("Error code:", error.code);
+          console.error("Error message:", error.message);
+          setErrorMessage(error.message);
+        });
+    } else {
+      // SIgnup code
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log("User signed in:", user);
+        })
+        .catch((error) => {
+          console.error("Error code:", error.code);
+          console.error("Error message:", error.message);
+          setErrorMessage(error.message);
+        });
+    }
+  };
   return (
     <div>
       <Header />
@@ -30,17 +82,21 @@ const Login = () => {
         )}
 
         <input
+          ref={email}
           type="text"
           placeholder="Email or mobile number"
           className="w-full p-4 my-2 bg-black text-white border border-gray-800 focus:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
         />
+        <p className="text-red-800"> {errorMessage}</p>
         <input
+          ref={password}
           type="password"
           placeholder="Password"
           className="w-full p-4 my-2 bg-black text-white border border-gray-800 focus:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
         />
         <button
-          type="submit"
+          type="button"
+          onClick={handleSubmitForm}
           className="p-3 my-2 bg-red-800 hover:bg-red-900 w-full rounded-md"
         >
           {isSignIn ? "Sign In" : "Sign Up"}
@@ -50,7 +106,7 @@ const Login = () => {
           type="submit"
           className="p-3 my-2 bg-gray-600 bg-opacity-50 hover:bg-opacity-45 w-full rounded-md"
         >
-          Use a sign-in code
+          <p>Use a sign-in code</p>
         </button>
         <div className="text-center p-2">
           <Link to="/">Forgot password?</Link>
@@ -71,7 +127,10 @@ const Login = () => {
           </Link>
         </div>
         <div className="text-gray-500">
-          This page is protected by Google reCAPTCHA to ensure you're not a bot.
+          <p>
+            This page is protected by Google reCAPTCHA to ensure you're not a
+            bot.
+          </p>
           <Link to="/" className="text-blue-700">
             Learn more.
           </Link>

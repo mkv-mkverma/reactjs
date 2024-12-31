@@ -73,12 +73,31 @@ npm run start
 
     - Create Reach App
     - Configured TailwindCss
+    - Header
+    - Routing of App
+    - Login Form
+    - Sign up Form
+    - Form Validation
+    - useRef Hook
+    - Firebase Project setup
+    - Firebase web app project
+    - Firebase Hosting
+    - Install Fiebase and Create utils/firebase.js
+    - npm install -g firebase-tools
+            Note I am using
+            npm install -g firebase-tools@11.0.0
+            because my node version is 14 or you can switch node vesion using nvm (nvm install 18 then nvm use 18)
+    - firebase login
+    - firebase init
+    - npm run build
+    - firebase deploy
 
 # Feature
 
     - Login / Signup
         - Sign In / Sign up Form
         - redirect to Browse page
+
     - Browse (comes after authentication)
         - Header
         - Main Movie
@@ -97,3 +116,5 @@ rafce then tab
 # install routing
 
 npm i react-router-dom
+npm install firebase
+npm install -g firebase-tools
