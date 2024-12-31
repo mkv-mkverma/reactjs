@@ -91,6 +91,9 @@ npm run start
     - firebase init
     - npm run build
     - firebase deploy
+    - firebase signIn and signUp
+    - Install redux
+    -
 
 # Feature
 
@@ -116,5 +119,7 @@ rafce then tab
 # install routing
 
 npm i react-router-dom
-npm install firebase
-npm install -g firebase-tools
+npm i firebase
+npm i -g firebase-tools
+npm i -D @reduxjs/toolkit
+npm i -D react-redux
