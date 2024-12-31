@@ -98,12 +98,13 @@ npm run start
         Create slice (ex: useSlice/cardSlice)
         Import slice in appStore reducer
         Provide store to body or App.js
-    - fiebase on auth state change API
+    - fiebase onAuthStateChanged API
 
     - Bowser and Header Component
     - Signout
     - Update displayName when Signup
-    -
+    - fix redirect issue (AuthGuard)
+    - unsubscribe onAuthStateChanged
 
 # Feature
 

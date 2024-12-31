@@ -40,11 +40,9 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log("User signed in:", user);
-          navigate("/browse");
         })
         .catch((error) => {
           console.error("Error code:", error.code);
-          console.error("Error message:", error.message);
           setErrorMessage(error.message);
         });
     } else {
@@ -57,7 +55,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("User signed in:", user);
+          // console.log("User signed in:", user);
 
           // update user Profile
           updateProfile(user, {
@@ -78,7 +76,6 @@ const Login = () => {
         })
         .catch((error) => {
           console.error("Error code:", error.code);
-          console.error("Error message:", error.message);
           setErrorMessage(error.message);
         });
     }
