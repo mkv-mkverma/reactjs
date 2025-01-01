@@ -2,8 +2,7 @@
 import React, {useRef, useState} from "react";
 import Header from "./Header";
 import {BACKGROUND_URL, USER_DEFAULT_ICON} from "../public/common/constant";
-import {Link, useNavigate} from "react-router-dom";
-import Footer from "./Footer";
+import {Link} from "react-router-dom";
 import {checkValidData} from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
@@ -17,7 +16,6 @@ import {addUser} from "../utils/userSlice";
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const email = useRef(null);
   const password = useRef(null);
   const displayName = useRef(null);
@@ -67,7 +65,6 @@ const Login = () => {
               const user = auth.currentUser;
               const {uid, email, displayName} = user;
               dispatch(addUser({uid, email, displayName}));
-              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -158,7 +155,6 @@ const Login = () => {
           </Link>
         </div>
       </form>
-      <Footer />
     </div>
   );
 };

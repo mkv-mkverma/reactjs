@@ -6,3 +6,12 @@ export const BACKGROUND_URL =
 
 export const USER_DEFAULT_ICON =
   "https://occ-0-1492-3662.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABeuqjuQsRgqEDlibtJTI5BMf8IxhLlLOeIT6xI4TL57mqv7XHja43gx02S8pZVe8JNGRQXjnrUk1VcsTXqi83tFKPI6OR3k.png?r=bd7";
+
+export const TMDB_OPTIONS = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NTM2NTFlNzJlZmI0MWU2M2FjOWJhNmRlZmJkYjU0NCIsIm5iZiI6MTczNTY3MjEwNi43Miwic3ViIjoiNjc3NDQxMmFiZjEwZmYxOTg0NjIyMDA0Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.dqVVp1buWmQ0KMJjUjQNPX90yLmZSnweqBQXdWXTWtc",
+  },
+};

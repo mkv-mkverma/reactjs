@@ -87,24 +87,44 @@ npm run start
             Note I am using
             npm install -g firebase-tools@11.0.0
             because my node version is 14 or you can switch node vesion using nvm (nvm install 18 then nvm use 18)
-    - firebase login
-    - firebase init
+    - Fiebase login
+    - Fiebase init
     - npm run build
-    - firebase deploy
-    - firebase signIn and signUp API
+    - Fiebase deploy
+    - Fiebase signIn and signUp API
     - Install redux
     - Utils
         appStore.js
         Create slice (ex: useSlice/cardSlice)
         Import slice in appStore reducer
         Provide store to body or App.js
-    - fiebase onAuthStateChanged API
-
+    - Fiebase onAuthStateChanged API
     - Bowser and Header Component
     - Signout
     - Update displayName when Signup
-    - fix redirect issue (AuthGuard)
+    - Fix redirect issue (AuthGuard)
     - unsubscribe onAuthStateChanged
+    - Register for TMDB and get API key (https://developer.themoviedb.org/reference/movie-now-playing-list)
+
+    - Planning for MainContainer and Secondary Container
+    - fetch now playing movie API inside browse
+    - Add data to redux store
+    - Create custom hook to call movie API and call in browse component
+    - Add trailer to redux store
+
+    - Create Custom hook for trailer video (API call for movie video by id)
+    - Update store with Trailer Video Data
+    - Embaded the youtube video and make it autoplay
+    - Tailwind Classes to make Main Container look awesome
+    - Build Secondary component
+    - Planning for Secondary Container Component
+    - Create Component for secondary/movie list/movie card
+    - img cdn url to const
+    - Movie card loop with map and add key
+    - Tailwind to movie card and movie list
+    - Create hook for popular/trending movies
+    - fetch for popular/trending movies
+    - Movie slice for popular/trending
 
 # Feature
 
