@@ -1,10 +1,10 @@
 import React from "react";
-import {BACKGROUND_URL, LOGO_URL} from "../public/common/constant";
+import {IMG_CDN_URL} from "../public/common/constant";
 
-const MovieCard = () => {
+const MovieCard = ({posterPath, title}) => {
   return (
-    <div className="w-48 mx-1">
-      <img src={BACKGROUND_URL} alt="" />
+    <div className="w-48 pr-4">
+      <img src={IMG_CDN_URL + posterPath} alt={title} />
     </div>
   );
 };

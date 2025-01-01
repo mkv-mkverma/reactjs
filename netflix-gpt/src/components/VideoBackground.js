@@ -7,7 +7,17 @@ const VideoBackground = ({movieId}) => {
     return store.movie?.trailerVideo;
   });
   useMovieTrailer(movieId);
-  return <div>VideoBackground</div>;
+
+  return (
+    <div className="w-screen no-hover">
+      <iframe
+        className="w-screen aspect-video no-hover"
+        src={`https://www.youtube.com/embed/${trailerVideo?.key}?autoplay=1&mute=1&controls=0`}
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      ></iframe>
+    </div>
+  );
 };
 
 export default VideoBackground;
