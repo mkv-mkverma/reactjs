@@ -8,10 +8,9 @@ const SecondaryContainer = () => {
     return store.movie;
   });
 
-  console.log({movies});
   return (
     <div className="bg-black">
-      <div className="mt-0 pl-4 relative z-20">
+      <div className=" pl-4 relative z-20 -mt-[10%]">
         <MovieList
           title={"Top Picks for You"}
           movies={movies.nowPlayingMovies}

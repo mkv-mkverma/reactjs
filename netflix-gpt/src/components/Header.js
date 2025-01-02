@@ -53,7 +53,7 @@ const Header = () => {
             alt="user-icon"
             className="w-12 h-12 p-2"
           />
-          <button type="button" onClick={handleSignOut}>
+          <button type="button" className="text-white" onClick={handleSignOut}>
             Sign Out
           </button>
         </div>
