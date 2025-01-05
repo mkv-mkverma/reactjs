@@ -124,23 +124,26 @@ npm run start
     - Create hook for popular/trending movies
     - fetch for popular/trending movies
     - Movie slice for popular/trending
-
     - Create button on header GPT Search
     - Creat GPT search Component import in browse
     - New Slice(store) for GPT Search
-
-    - GPT Search Bar  Comp
+    - GPT Search Bar Comp
         - form
             - search bar input
             - search button
     - GPT Movie Suggesion  Comp
-    - language constant file
     - GPT API register
         - https://platform.openai.com/settings/organization/api-keys
+    - Install open API
+        - https://www.npmjs.com/package/openai
+        - npm i openai
     - openai.js in utils
+        - set API key see doc in usage and do congf
     - call open API on button type and search
         Act as a Movie Recommendation system and suggest some movies for the query +searchValue+ only give me name of 5 movies,
         csv like the example result given ahead. Example: Gaddar, Don, Koi mil gaya, hum aap k hai kaun.
+    - If API is not working Add Payment details
+
     - get response and pass the value on call TMDB search API (Use promise.all)
     - create store for gpt
     - Store the value in redux
@@ -148,6 +151,7 @@ npm run start
     - use MovieList to display movie
     - Adding .env file
     - Memoization
+    - language constant file
     - Site responsive
 
 # Feature

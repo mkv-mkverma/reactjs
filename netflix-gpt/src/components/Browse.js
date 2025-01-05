@@ -6,8 +6,14 @@ import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
+import GptSearch from "./GptSearch";
+import {useSelector} from "react-redux";
 
 const Browse = () => {
+  const gpt = useSelector((store) => {
+    return store.gpt;
+  });
+
   useNowPlayingMovies();
   useUpcomingMovies();
   usePopularMovies();
@@ -16,23 +22,14 @@ const Browse = () => {
   return (
     <>
       <Header />
-      <MainContainer />
-      <SecondaryContainer />
-      {/*
-        MainContainer component
-          - VideoBackground component (API call for movie video by id)
-          - Video Title and Subtitle component
-        SecondaryContainer component
-          - MovieList * n (Component)
-            - card * n (Component)
-
-            MovieList - Popular
-              
-            MovieList - Now Playing
-            MovieList - Trending
-            MovieList - Horror
-
-      */}
+      {gpt.isGptSearch ? (
+        <GptSearch />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
     </>
   );
 };

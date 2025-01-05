@@ -3,7 +3,7 @@ import {IMG_CDN_URL} from "../public/common/constant";
 
 const MovieCard = ({posterPath, title}) => {
   return (
-    <div className="w-64 pr-4">
+    <div className="w-40 pr-4">
       <img src={IMG_CDN_URL + posterPath} alt={title} />
     </div>
   );
