@@ -143,7 +143,6 @@ npm run start
         Act as a Movie Recommendation system and suggest some movies for the query +searchValue+ only give me name of 5 movies,
         csv like the example result given ahead. Example: Gaddar, Don, Koi mil gaya, hum aap k hai kaun.
     - If API is not working Add Payment details
-
     - get response and pass the value on call TMDB search API (Use promise.all)
     - create store for gpt
     - Store the value in redux
@@ -151,6 +150,7 @@ npm run start
     - use MovieList to display movie
     - Adding .env file
     - Memoization
+
     - language constant file
     - Site responsive
 
