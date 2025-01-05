@@ -111,7 +111,6 @@ npm run start
     - Add data to redux store
     - Create custom hook to call movie API and call in browse component
     - Add trailer to redux store
-
     - Create Custom hook for trailer video (API call for movie video by id)
     - Update store with Trailer Video Data
     - Embaded the youtube video and make it autoplay
@@ -125,6 +124,31 @@ npm run start
     - Create hook for popular/trending movies
     - fetch for popular/trending movies
     - Movie slice for popular/trending
+
+    - Create button on header GPT Search
+    - Creat GPT search Component import in browse
+    - New Slice(store) for GPT Search
+
+    - GPT Search Bar  Comp
+        - form
+            - search bar input
+            - search button
+    - GPT Movie Suggesion  Comp
+    - language constant file
+    - GPT API register
+        - https://platform.openai.com/settings/organization/api-keys
+    - openai.js in utils
+    - call open API on button type and search
+        Act as a Movie Recommendation system and suggest some movies for the query +searchValue+ only give me name of 5 movies,
+        csv like the example result given ahead. Example: Gaddar, Don, Koi mil gaya, hum aap k hai kaun.
+    - get response and pass the value on call TMDB search API (Use promise.all)
+    - create store for gpt
+    - Store the value in redux
+        - moviesName/movieRestutls/showGpt search
+    - use MovieList to display movie
+    - Adding .env file
+    - Memoization
+    - Site responsive
 
 # Feature
 
@@ -154,3 +178,4 @@ rafce then tab
 - npm i -g firebase-tools
 - npm i -D @reduxjs/toolkit
 - npm i -D react-redux
+- npm i openai

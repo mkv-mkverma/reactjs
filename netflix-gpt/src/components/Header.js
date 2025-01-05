@@ -47,7 +47,13 @@ const Header = () => {
     <div className="absolute w-full px-8 py-2 z-20 flex justify-between">
       <img className="w-44" src={LOGO_URL} alt="logo" />
       {user && (
-        <div className="flex px-4">
+        <div className="flex px-4 z-40">
+          <button
+            type="button"
+            className="text-black bg-white opacity-80 my-4 px-2 py-2 rounded-md z-20"
+          >
+            GPT Search
+          </button>
           <img
             src={USER_DEFAULT_ICON}
             alt="user-icon"
