@@ -183,3 +183,5 @@ rafce then tab
 - npm i -D @reduxjs/toolkit
 - npm i -D react-redux
 - npm i openai
+
+# https://netflixgpt-33637.web.app/
